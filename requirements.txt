@@ -1,5 +1,5 @@
-langchain==0.1.0
-langgraph==0.1.15
+langchain
+langgraph
 fastapi==0.100.0
 uvicorn==0.23.2
 requests==2.31.0
