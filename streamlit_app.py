@@ -1,21 +1,21 @@
 import streamlit as st
 from langgraph.graph import StateGraph, START, END
+from typing import TypedDict
 
-# Define a simple state schema
-state_schema = {
-    "input_text": str,
-    "output_text": str,
-}
+# Define the state schema using TypedDict
+class StateSchema(TypedDict):
+    input_text: str
+    output_text: str
 
 # Initialize the graph
-builder = StateGraph(state_schema)
+builder = StateGraph(StateSchema)
 
 # Define nodes
-def input_node(state):
+def input_node(state: StateSchema) -> dict:
     """Simulates an input node."""
     return {"input_text": state["input_text"]}
 
-def processing_node(state):
+def processing_node(state: StateSchema) -> dict:
     """Simulates a processing node."""
     processed_text = f"Processed: {state['input_text']}"
     return {"output_text": processed_text}
