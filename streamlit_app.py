@@ -9,11 +9,17 @@ from typing_extensions import TypedDict
 from typing import Optional, Annotated
 # from IPython.display import Image
 import json
+import toml
 
-# MongoDB setup
-mongo_uri = os.getenv("MONGO_URI")
-if not mongo_uri:
-    raise ValueError("Environment variable MONGO_URI is not set!")
+# Load the configuration file
+config = toml.load("config.toml")
+
+# Access the keys
+langchain_api_key = config["api_keys"]["langchain"]
+openai_api_key = config["api_keys"]["openai"]
+tavily_api_key = config["api_keys"]["tavily"]
+mongo_uri = config["database"]["mongo_uri"]
+langchain_tracing_v2 = config["tracing"]["langchain_v2"]
 
 client = MongoClient(mongo_uri)
 db = client["Resume_extraction"]
