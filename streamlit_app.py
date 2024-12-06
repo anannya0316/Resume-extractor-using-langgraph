@@ -7,7 +7,7 @@ from langdetect import detect
 from langgraph.graph import StateGraph, START, END
 from typing_extensions import TypedDict
 from typing import Optional, Annotated
-from IPython.display import Image
+# from IPython.display import Image
 import json
 
 # MongoDB setup
